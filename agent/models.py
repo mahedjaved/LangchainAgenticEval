@@ -15,4 +15,3 @@ model = init_chat_model(
 response = model.invoke("Tell me a joke on Hideo Kojima.")
 
 print(response.content)
-
