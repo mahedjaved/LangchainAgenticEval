@@ -31,7 +31,7 @@ def calculate_right_refund(user: str, items: list[PurchaseItem]) -> str:
         total_refund = 0
         for item in items:
             if users_data[user].get(item.name):
-                total_refund += user_data[user][items]["price"]
+                total_refund += users_data[user][item.name]["price"]
         return f"The value of the refund is: {total_refund}"
     return {"status": f"No username found for: {user}"}
 
@@ -54,4 +54,7 @@ def get_today_date(user: str) -> str:
     return date.today()
 
 
-print(get_user_purchase_history.invoke("user123"))
+# print(get_user_purchase_history.invoke("user123"))
+book = PurchaseItem(name="book")
+pen = PurchaseItem(name="pen")
+print(calculate_right_refund.invoke({"user": "user123", "items": [book, pen]}))
