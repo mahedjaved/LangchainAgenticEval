@@ -42,7 +42,7 @@ def issue_refund_ticket(user: str, refund_amount: int) -> str:
     This tool will send a ticket to the teams to the return the refund. For security we are not returning money as agents go rogue they may misuse this function to transfer money
     """
     logging.info(f"[TOOL:{__name__}] Issuing refund for user: {user}")
-    return f"Refund tick has been issued successfully with amount {refund_amountF} for user: {user}"
+    return f"Refund tick has been issued successfully with amount {refund_amount} for user: {user}"
 
 
 @tool
@@ -54,7 +54,10 @@ def get_today_date(user: str) -> str:
     return date.today()
 
 
+# Following is for debugging ONLY
 # print(get_user_purchase_history.invoke("user123"))
-book = PurchaseItem(name="book")
-pen = PurchaseItem(name="pen")
-print(calculate_right_refund.invoke({"user": "user123", "items": [book, pen]}))
+# book = PurchaseItem(name="book")
+# pen = PurchaseItem(name="pen")
+# print(calculate_right_refund.invoke({"user": "user123", "items": [book, pen]}))
+# print(issue_refund_ticket.invoke({"user": "user123", "refund_amount": 200}))
+# print(get_today_date.invoke({"user": "user123"}))
