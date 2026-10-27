@@ -12,6 +12,5 @@ model = init_chat_model(
     api_key=os.getenv("KILO_API_KEY"),
 )
 
-response = model.invoke("Tell me a joke on Hideo Kojima.")
-
-print(response.content)
+# response = model.invoke("Tell me a joke on Hideo Kojima.")
+# print(response.content)

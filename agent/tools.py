@@ -9,13 +9,17 @@ from datetime import date
 
 load_dotenv()
 
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s"
+)
+
 
 @tool
 def get_user_purchase_history(user: str) -> dict:
     """
     This tool takes the user username and returns a dict of the user purchase history if the user exists
     """
-    logging.info(f"[TOOL:{__name__}]Getting purchase history for user: {user}")
+    logging.info(f"[Tool:{get_user_purchase_history.name}]Getting purchase history for user: {user}")
     if users_data.get(user):
         return users_data[user]
     return {"status": f"No user found for {user}"}
@@ -26,7 +30,7 @@ def calculate_right_refund(user: str, items: list[PurchaseItem]) -> str:
     """
     This tool takes a list of the items to be returned and the username and will return how much the refund is worth
     """
-    logging.info(f"[TOOL:{__name__}] Calculating refund for user: {user}")
+    logging.info(f"[Tool:{calculate_right_refund.name}] Calculating refund for user: {user}")
     if users_data.get(user):
         total_refund = 0
         for item in items:
@@ -41,7 +45,7 @@ def issue_refund_ticket(user: str, refund_amount: int) -> str:
     """
     This tool will send a ticket to the teams to the return the refund. For security we are not returning money as agents go rogue they may misuse this function to transfer money
     """
-    logging.info(f"[TOOL:{__name__}] Issuing refund for user: {user}")
+    logging.info(f"[Tool:{issue_refund_ticket.name}] Issuing refund for user: {user}")
     return f"Refund tick has been issued successfully with amount {refund_amount} for user: {user}"
 
 
@@ -50,7 +54,7 @@ def get_today_date(user: str) -> str:
     """
     This tool will return today's date
     """
-    logging.info(f"[TOOL:{__name__}] Fetching today's date for user: {user}")
+    logging.info(f"[Tool:{get_today_date.name}] Fetching today's date for user: {user}")
     return date.today()
 
 
